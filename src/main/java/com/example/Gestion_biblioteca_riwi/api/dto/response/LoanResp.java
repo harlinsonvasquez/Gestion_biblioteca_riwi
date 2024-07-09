@@ -1,5 +1,6 @@
 package com.example.Gestion_biblioteca_riwi.api.dto.response;
 
+import com.example.Gestion_biblioteca_riwi.utils.enums.StatusLoan;
 import com.example.Gestion_biblioteca_riwi.utils.enums.StatusReservation;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,7 +18,7 @@ public class LoanResp{
     private Long id;
     private LocalDateTime loanDate;
     private LocalDateTime returnDate;
-    private StatusReservation status;
-    private BookBasicResp bookId;
-    private UserBasicResp userId;
+    private StatusLoan status;
+    private BookBasicResp book;
+    private UserBasicResp user;
 }

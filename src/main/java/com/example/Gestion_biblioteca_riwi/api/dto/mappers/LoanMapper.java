@@ -9,19 +9,20 @@ import org.mapstruct.*;
 
 import java.util.List;
 
-@Mapper(componentModel = MappingConstants.ComponentModel.SPRING,uses={UserMapper.class,BookMapper.class})
+@Mapper(componentModel = MappingConstants.ComponentModel.SPRING,uses=UserMapper.class)
 public interface LoanMapper {
     @Mappings({
             @Mapping(target = "user.id",source = "loanRequest.userId"),
             @Mapping(target = "book.id",source ="loanRequest.bookId" )
     })
     Loan requestToEntity(LoanRequest loanRequest);
-    @Mapping(target = "bookId",source = "loan.book")
+
+    @Mapping(target = "book",source = "loan.book")
     @Named("entityToBasicResponse")
     LoanBasicResp entityToBasicResponse(Loan loan);
 
-    @Mapping(target = "bookId",source = "loan.book")
-    @Mapping(target = "userId",source = "loan.user")
+    @Mapping(target = "book",source = "loan.book")
+    @Mapping(target = "user",source = "loan.user")
     @Named("entityToLoanResp")
     LoanResp entityToLoanResp(Loan loan);
 
@@ -31,6 +32,7 @@ public interface LoanMapper {
 
 
     List<LoanResp> listEntityLoanResp(List<Loan> loans);
+
 
 
 }

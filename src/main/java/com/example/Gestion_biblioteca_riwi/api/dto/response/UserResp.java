@@ -22,4 +22,6 @@ public class UserResp {
     private TypeRol role;
     private List<ReservationBasicResp> reservations;
     private List<LoanBasicResp> loans;
+
+
 }

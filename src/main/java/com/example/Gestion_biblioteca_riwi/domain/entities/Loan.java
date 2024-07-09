@@ -1,5 +1,6 @@
 package com.example.Gestion_biblioteca_riwi.domain.entities;
 
+import com.example.Gestion_biblioteca_riwi.utils.enums.StatusLoan;
 import com.example.Gestion_biblioteca_riwi.utils.enums.StatusReservation;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -23,7 +24,7 @@ public class Loan {
     @Column(nullable = false)
     private LocalDateTime returnDate;
     @Column(nullable = false)
-    private StatusReservation status;
+    private StatusLoan status;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
@@ -32,4 +33,9 @@ public class Loan {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "book_id", referencedColumnName = "id")
     private Book book;
+
+    @PrePersist
+    protected void onCreate() {
+        this.loanDate = LocalDateTime.now();
+    }
 }

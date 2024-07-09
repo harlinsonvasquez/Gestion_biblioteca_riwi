@@ -1,5 +1,6 @@
 package com.example.Gestion_biblioteca_riwi.api.dto.request;
 
+import com.example.Gestion_biblioteca_riwi.utils.enums.StatusLoan;
 import com.example.Gestion_biblioteca_riwi.utils.enums.StatusReservation;
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotNull;
@@ -19,7 +20,7 @@ public class LoanRequest {
     @NotNull(message = "la fecha de entrega del libro es requerida")
     private LocalDateTime returnDate;
     @NotNull(message = "el estado del libro es requerido")
-    private StatusReservation status;
+    private StatusLoan status;
     @NotNull(message = "el id del libro es requerido")
     private Long bookId;
     @NotNull(message = "el id del usuario es requerido")
