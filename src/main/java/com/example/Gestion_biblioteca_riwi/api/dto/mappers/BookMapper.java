@@ -1,13 +1,12 @@
 package com.example.Gestion_biblioteca_riwi.api.dto.mappers;
 
 import com.example.Gestion_biblioteca_riwi.api.dto.request.BookRequest;
+import com.example.Gestion_biblioteca_riwi.api.dto.request.UserRequest;
 import com.example.Gestion_biblioteca_riwi.api.dto.response.BookBasicResp;
 import com.example.Gestion_biblioteca_riwi.api.dto.response.BookResp;
 import com.example.Gestion_biblioteca_riwi.domain.entities.Book;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.MappingConstants;
-import org.mapstruct.Named;
+import com.example.Gestion_biblioteca_riwi.domain.entities.UserEntity;
+import org.mapstruct.*;
 
 import java.util.List;
 
@@ -24,5 +23,7 @@ public interface BookMapper {
     BookResp entityToBookResp(Book book);
 
     List<BookBasicResp> listEntityToBasicResp(List<Book> bookList);
+    @Mapping(target = "id", ignore = true)// Ignora la asignación de ID
+    void updateBookFromRequest(BookRequest request, @MappingTarget Book bookRequest);
 
 }
