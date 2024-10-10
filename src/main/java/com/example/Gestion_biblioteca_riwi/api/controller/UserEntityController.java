@@ -22,6 +22,7 @@ public class UserEntityController {
     @Autowired
     private final IUserEntityService userEntityService;
 
+
     @GetMapping
     public ResponseEntity<Page<UserBasicResp>> getAllUsers(
             @RequestParam(defaultValue = "1")int page,
